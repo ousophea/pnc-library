@@ -1,0 +1,12 @@
+diff a/application/views/templates/header.php b/application/views/templates/header.php	(rejected hunks)
+@@ -62,7 +62,9 @@
+ 
+     <!-- bootbox code -->
+     <script src="<?php echo base_url();?>assets/js/bootbox.min.js"></script>
+-
++    <!-- load file angular -->
++    <script src="<?php echo base_url("assets/js/angular.js");?>"></script>
++    <script src="http://listjs.com/no-cdn/list.js"></script>
+     <link rel="icon" type="image/x-icon" href="<?php echo base_url();?>favicon.ico" sizes="32x32">
+     
+     

@@ -1,0 +1,9 @@
+diff a/application/config/database.php b/application/config/database.php	(rejected hunks)
+@@ -75,7 +75,6 @@
+ 
+ $db['default'] = array(
+ 	'dsn'	=> '',
+-	'database' => 'pnc-library',
+ 	'hostname' => 'kratie',
+ 	'username' => '2016vc2g6',
+ 	'password' => 'vc2p@my426', 

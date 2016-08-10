@@ -1,0 +1,99 @@
+.panel-xs{
+	width:40%;
+	height:auto;
+	margin: 0 auto;
+}
+.panel-sm{
+	width:60%;
+	height:auto;
+	margin: 0 auto;
+}
+.panel-md{
+	width:80%;
+	height:auto;
+	margin: 0 auto;
+}
+.panel-lg{
+	width:100%;
+	height:auto;
+	margin: 0 auto;
+}
+select,option,input[type='search']
+{
+  padding: 6px 10px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+       -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+
+}
+.paginate_button {
+  color: #fff;
+  background-color: #3C8DBC;
+  border-color: #4cae4c;
+}
+.panel-spacing{
+  padding: 0% 4%;
+  margin-bottom:3%;
+  margin-top:3%;
+}
+#textarea-h{
+	height:1%;
+}
+.header-table{
+	border: 1px solid #D0D0D0;
+	box-shadow: 0 0 8px #D0D0D0;
+	border-radius:3px;
+}
+#text-color-black{
+	color:red;
+	text-align:center;
+	font-size:15px;
+	border-color: #d73925;
+}
+#text-color-success{
+	color:black;
+	text-align:center;
+	font-size:15px;
+}
+.menu-header{
+	background-color: #00c0ef !important;
+	box-shadow: 0 0 8px #D0D0D0;
+}
+.sidebar-menu{
+	background-color: #00c0ef !important;
+	box-shadow: 0 0 8px #D0D0D0;
+}
+.navbar-default{
+	/* box-shadow: 0 0 8px #D0D0D0;
+	opacity: 0.5; */
+}
+.table-row{
+	background-color:#3C8DBC;
+	color: #ffffff;
+}
+/* Shadow
+-----------------------------------------------------------------------------------------------------------*/
+.ui-shadow {
+	-webkit-box-shadow: 0 1px 3px /*{global-box-shadow-size}*/ 		rgba(0,0,0,.15) /*{global-box-shadow-color}*/;
+	-moz-box-shadow: 0 1px 3px /*{global-box-shadow-size}*/ 		rgba(0,0,0,.15) /*{global-box-shadow-color}*/;
+	box-shadow: 0 1px 3px /*{global-box-shadow-size}*/ 				rgba(0,0,0,.15) /*{global-box-shadow-color}*/;
+}
+.ui-shadow-inset {
+	-webkit-box-shadow: inset 0 1px 3px /*{global-box-shadow-size}*/ 	rgba(0,0,0,.2) /*{global-box-shadow-color}*/;
+	-moz-box-shadow: inset 0 1px 3px /*{global-box-shadow-size}*/ 		rgba(0,0,0,.2) /*{global-box-shadow-color}*/;
+	box-shadow: inset 0 1px 3px /*{global-box-shadow-size}*/ 	rgba(0,0,0,.2) /*{global-box-shadow-color}*/;
+}
+.ui-overlay-shadow {
+	-webkit-box-shadow: 0 0 12px 		rgba(0,0,0,.6);
+	-moz-box-shadow: 0 0 12px 			rgba(0,0,0,.6);
+	box-shadow: 0 0 12px 				rgba(0,0,0,.6);
+}
