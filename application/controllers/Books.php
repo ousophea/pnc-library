@@ -13,6 +13,17 @@ class Books extends CI_Controller {
         $this->load->helper('form');
         $this->load->library('form_validation');
         $this->load->model('books_model');
+            /////// Check user autherize to access any methods
+        if ($this->session->userdata('is_admin')=="") {
+            // Allow some methods?
+            $allowed = array(
+                'listbook','detail_book'
+            );
+            if (!in_array($this->router->fetch_method(), $allowed)) {
+                redirect('authorize');
+            }
+        }
+          /////////=====================================
     }
 
     /*
@@ -20,6 +31,7 @@ class Books extends CI_Controller {
      */
 
     public function index() {
+
         $data = getUserContext($this);
         $data['title'] = 'Books';
         $this->load->view('templates/header', $data);
@@ -35,6 +47,7 @@ class Books extends CI_Controller {
      */
 
     public function add() {
+
         $data = getUserContext($this);
         $data['title'] = 'Add book';
         $this->load->model('Books_model');

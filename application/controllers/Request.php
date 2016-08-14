@@ -7,6 +7,18 @@ class Request extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		setUserContext($this);
+                 /////// Check user autherize to access any methods
+        if ($this->session->userdata('is_admin') == "") {
+            // Allow some methods?
+            $allowed = array(
+                'requestBook', 'showAllrequest'
+            );
+            if (!in_array($this->router->fetch_method(), $allowed)) {
+                redirect('authorize');
+            }
+        }
+        /////////=====================================
+
 		$this->load->model('Book_request_model');
 	}
 	/*
