@@ -14,7 +14,7 @@ class Account extends CI_Controller {
         if ($this->session->userdata('is_admin') == "") {
             // Allow some methods?
             $allowed = array(
-                'listbook', 'detail_book'
+                'listbook', 'accountState'
             );
             if (!in_array($this->router->fetch_method(), $allowed)) {
                 redirect('authorize');
