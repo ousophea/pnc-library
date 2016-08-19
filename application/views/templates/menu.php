@@ -80,6 +80,9 @@
                                 <li>
                                     <a href="<?php echo base_url();?>bookcategory"><i class="fa fa-briefcase fa-fw"></i>&nbsp;Books Category</a>
                                 </li>
+                                <li>
+                                    <a href="<?php echo base_url();?>request/showAllrequest"><i class="fa fa-briefcase fa-fw"></i>&nbsp;Books Requested</a>
+                                </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>

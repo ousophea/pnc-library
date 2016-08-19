@@ -10,7 +10,7 @@
 				<i class="fa fa-book"></i>&nbsp;New Books Request
 				</a>
 			 </h3>
-			  <button onclick="window.history.back();" type="button" class="btn btn-danger pull-right"><span class="glyphicon glyphicon-chevron-left">Back</span></button>
+			  <button onclick="window.history.back();" type="button" class="btn btn-danger pull-left"><span class="glyphicon glyphicon-chevron-left">Back</span></button>
 		   </div>
 		</div>
 		<p class="clearfix"></p>
