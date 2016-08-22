@@ -132,4 +132,5 @@ $autoload['language'] = array();
 $autoload['model'] = array();
 
 // autoload oAuth libraries
-$autoload['packages'] = array( APPPATH . 'third_party/OAuthClient' );
+//$autoload['packages'] = array( APPPATH . 'third_party/OAuthClient' );
+$autoload['packages'] = array( 'http://library.pnc.lan/dashboard' );

@@ -75,7 +75,7 @@
                                     <a href="<?php echo base_url();?>users"><i class="fa fa-users fa-fw"></i>&nbsp;Users</a>
                                 </li>
 								<li>
-                                    <a href="<?php echo base_url();?>users/userstate"></i>&nbsp;<i class="fa fa-user fa-fw"></i>&nbsp;Users state</a>
+                                    <a href="<?php echo base_url();?>users/userstate"></i>&nbsp;<i class="fa fa-user fa-fw"></i>&nbsp;Book Borrowed By User</a>
                                 </li>
                                 <li>
                                     <a href="<?php echo base_url();?>bookcategory"><i class="fa fa-briefcase fa-fw"></i>&nbsp;Books Category</a>
