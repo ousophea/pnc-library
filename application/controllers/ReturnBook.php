@@ -98,10 +98,10 @@ class ReturnBook extends CI_Controller {
         $id = $this->uri->segment(3);
         $data['send'] = $this->Return_model->sendMail($id);
         $body = $this->load->view('emails/mailformat', $data, true);
-//        $address = $this->session->userdata('email');
-        $address = "ousophea@gmail.com";
-//        $recieveName = $this->session->userdata('name');
-        $recieveName = "sophea.ou@passerellesnumeriques.org";
+        $address = $this->session->userdata('email');
+//        $address = "ousophea@gmail.com";
+        $recieveName = $this->session->userdata('name');
+//        $recieveName = "sophea.ou@passerellesnumeriques.org";
         $mailTitle = "Return book to library";
         $send = myEmail($address, $recieveName, $mailTitle, $body);
         if (!$send) {
