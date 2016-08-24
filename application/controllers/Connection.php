@@ -153,6 +153,86 @@ class Connection extends CI_Controller {
     }
 
     /**
+     * Login with google account
+     * @author Sophea
+     */
+    public function User_Authentication() {
+        // Include the google api php libraries
+        include_once APPPATH . "libraries/google-api-php-client/Google_Client.php";
+        include_once APPPATH . "libraries/google-api-php-client/contrib/Google_Oauth2Service.php";
+
+        // Google Project API Credentials
+        $clientId = '986813330668-qd2hflh8v75jl0vtsi0pb1rflg6gjbvm.apps.googleusercontent.com';
+        $clientSecret = 'O5S5FrgeHFb46okzxJCs7IoU';
+        $redirectUrl = base_url() . 'connection/user_authentication';
+
+        // Google Client Configuration
+        $gClient = new Google_Client();
+        $gClient->setApplicationName('Login to codexworld.com');
+        $gClient->setClientId($clientId);
+        $gClient->setClientSecret($clientSecret);
+        $gClient->setRedirectUri($redirectUrl);
+        $google_oauthV2 = new Google_Oauth2Service($gClient);
+
+////        if (isset($_REQUEST['code'])) {
+        $gClient->authenticate();
+        $this->session->set_userdata('token', $gClient->getAccessToken());
+////        }
+//
+//        $token = $this->session->userdata('token');
+        if (!empty($token)) {
+            $gClient->setAccessToken($token);
+        }
+        if ($gClient->getAccessToken()) {
+            $userProfile = $google_oauthV2->userinfo->get();
+            // Preparing data for database insertion
+            $firstName = $userProfile['family_name'];
+            $lastName = $userProfile['given_name'];
+            $email = $userProfile['email'];
+            $login = $userProfile['family_name'].".".$userProfile['given_name'];
+//            ================Be===========
+//If we find the e-mail address into the database, we're good
+            $loggedin = $this->users_model->checkCredentialsEmail($userProfile['email']);
+
+            if ($loggedin) { // means account already exists
+// Update last connection time
+                $id = $this->users_model->getUserIdByEmail($email);
+                $this->users_model->updateLastConnectionDate($id);
+            } else { // Need to create new account on database
+// Create Account
+// We inject into the POST variable all informations required to create the Account like if the user register
+// Calling model method to create user
+                $_POST['firstname'] = $firstName;
+                $_POST['lastname'] = $lastName;
+                $_POST['login'] = $login;
+                $_POST['email'] = $email;
+                $this->users_model->setUsers();
+                $this->session->set_flashdata('msg', 'Welcome into PNC Library. Your account has been created');
+
+// check credentials again, will start the session
+                $loggedin = $this->users_model->checkCredentialsEmail($email);
+                if ($loggedin) {
+// update last connection dateTime
+                    $id = $this->users_model->getUserIdByEmail($email);
+                    $this->users_model->updateLastConnectionDate($id);
+                }
+            }
+
+// Redirect to home page, when authentification is done
+//If the user has a target page redirect to this destination
+            if ($this->session->userdata('last_page') != '') {
+                redirect($this->session->userdata('last_page'));
+            } else {
+                redirect(base_url());
+            }
+//            =================
+        } else {
+            $data['authUrl'] = $gClient->createAuthUrl();
+        }
+        $this->load->view('connection/user_authentication', $data);
+    }
+
+    /**
      * Try to authenticate the user using one of the OAuth2 providers
      */
     public function loginOAuth2() {

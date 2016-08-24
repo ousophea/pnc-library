@@ -21,7 +21,7 @@ class Users extends CI_Controller {
         if ($this->session->userdata('is_admin') == "") {
             // Allow some methods?
             $allowed = array(
-                'changepassword', 'detail_book'
+                'changepassword', 'detail_book','edit'
             );
             if (!in_array($this->router->fetch_method(), $allowed)) {
                 redirect('authorize');

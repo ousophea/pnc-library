@@ -2,7 +2,7 @@
    This page for form login .
    This page can see user and administrator.
 -->
-<script type="text/javascript">
+<!--<script type="text/javascript">
     (function () {
         var po = document.createElement('script');
         po.type = 'text/javascript';
@@ -11,7 +11,7 @@
         var s = document.getElementsByTagName('script')[0];
         s.parentNode.insertBefore(po, s);
     })();
-</script>
+</script>-->
 <p class="clearfix"></p>
 <p class="clearfix"></p>
 <p class="clearfix"></p>
@@ -50,7 +50,7 @@
                         <!-- Change this to a button or input when using this as a form -->
                         <button id="send" class="btn btn-lg btn-success btn-block">Login</button>  
 <?php } if ($oauth2_enabled === TRUE) { ?>         
-                        <a href="<?php echo base_url(); ?>connection/loginOAuth2" class="btn btn-lg btn-block btn-social btn-google">
+                        <a href="<?php echo base_url(); ?>connection/user_authentication" class="btn btn-lg btn-block btn-social btn-google">
                             <i class="fa fa-google"></i> Sign in with Google
                         </a>    
 <?php } ?>                                

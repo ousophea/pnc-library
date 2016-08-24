@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the league/oauth2-client library
  *
@@ -19,8 +20,8 @@ use League\OAuth2\Client\Grant\Exception\InvalidGrantException;
 /**
  * Represents a factory used when retrieving an authorization grant type.
  */
-class GrantFactory
-{
+class GrantFactory {
+
     /**
      * @var array
      */
@@ -33,8 +34,7 @@ class GrantFactory
      * @param  AbstractGrant $grant
      * @return self
      */
-    public function setGrant($name, AbstractGrant $grant)
-    {
+    public function setGrant($name, AbstractGrant $grant) {
         $this->registry[$name] = $grant;
 
         return $this;
@@ -48,8 +48,7 @@ class GrantFactory
      * @param  string $name
      * @return AbstractGrant
      */
-    public function getGrant($name)
-    {
+    public function getGrant($name) {
         if (empty($this->registry[$name])) {
             $this->registerDefaultGrant($name);
         }
@@ -63,8 +62,7 @@ class GrantFactory
      * @param  string $name
      * @return self
      */
-    protected function registerDefaultGrant($name)
-    {
+    protected function registerDefaultGrant($name) {
         // PascalCase the grant. E.g: 'authorization_code' becomes 'AuthorizationCode'
         $class = str_replace(' ', '', ucwords(str_replace(['-', '_'], ' ', $name)));
         $class = 'League\\OAuth2\\Client\\Grant\\' . $class;
@@ -80,9 +78,10 @@ class GrantFactory
      * @param  mixed $class
      * @return boolean
      */
-    public function isGrant($class)
-    {
-        return is_subclass_of($class, AbstractGrant::$class);
+    public function isGrant($class) {
+//        return is_subclass_of($class, AbstractGrant::$class);
+        $Abstract = 'League\\OAuth2\\Client\\Grant\\AbstractGrant';
+        return is_subclass_of($class, $Abstract);
     }
 
     /**
@@ -92,13 +91,12 @@ class GrantFactory
      * @param  mixed $class
      * @return void
      */
-    public function checkGrant($class)
-    {
+    public function checkGrant($class) {
         if (!$this->isGrant($class)) {
             throw new InvalidGrantException(sprintf(
-                'Grant "%s" must extend AbstractGrant',
-                is_object($class) ? get_class($class) : $class
+                    'Grant "%s" must extend AbstractGrant', is_object($class) ? get_class($class) : $class
             ));
         }
     }
+
 }

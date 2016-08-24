@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://library_pnc.lan/';
+$config['base_url'] = 'http://localhost:8080/library.pnc.lan/';
 
 /*
 |--------------------------------------------------------------------------
@@ -542,5 +542,6 @@ $config['classic_form_enabled'] = TRUE;
 $config['oauth2_enabled'] = TRUE;
 $config['oauth2_client_id'] = '941322823089-4pg46fgt8gtfcbhsj8skqkis7htvdbhs.apps.googleusercontent.com';
 $config['oauth2_client_secret'] = 'vb_OXuuQdOEaDnQFkd2yNgsO';
-$config['oauth2_redirect_url'] = 'http://library.pnc.lan/connection/googleLogin';
+$config['oauth2_redirect_url'] = 'http://localhost:8080/library.pnc.lan/connection/loginOAuth2';
+//$config['oauth2_redirect_url'] = 'http://localhost:8080/library.pnc.lan/connection/User_Authentication';
 
