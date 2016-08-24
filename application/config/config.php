@@ -23,7 +23,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://library_pnc.lan/';
+//$config['base_url'] = 'http://kratie.pnc.lan/2016vc2g6';
+$config['base_url'] = 'http://localhost:8080/library.pnc.lan/';
 
 /*
 |--------------------------------------------------------------------------
@@ -536,11 +537,11 @@ $config['from_name'] = 'no.reply@pnc-library.org';
 //$config['oauth2_enabled'] = TRUE;
 //$config['oauth2_client_id'] = '476252958125-9u08caq7pu352rvehq33jd9n3sl34jod.apps.googleusercontent.com';
 //$config['oauth2_client_secret'] = 'mfviddYz3nIZmh5h9sLM3RX3';
-//$config['oauth2_redirect_url'] = 'http://localhost/pnc-library/connection/loginOAuth2';
+//$config['oauth2_redirect_url'] = 'http://kratie.pnc.lan/2016vc2g6/connection/loginOAuth2';
 
-$config['classic_form_enabled'] = TRUE;
-$config['oauth2_enabled'] = TRUE;
+$config['classic_form_enabled'] = true;
+$config['oauth2_enabled'] = true;
 $config['oauth2_client_id'] = '941322823089-4pg46fgt8gtfcbhsj8skqkis7htvdbhs.apps.googleusercontent.com';
 $config['oauth2_client_secret'] = 'vb_OXuuQdOEaDnQFkd2yNgsO';
-$config['oauth2_redirect_url'] = 'http://library.pnc.lan/connection/googleLogin';
+$config['oauth2_redirect_url'] = 'http://localhost:8080/library.pnc.lan/connection/loginOAuth2';
 

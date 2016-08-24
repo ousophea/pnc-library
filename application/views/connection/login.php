@@ -50,7 +50,7 @@
                         <!-- Change this to a button or input when using this as a form -->
                         <button id="send" class="btn btn-lg btn-success btn-block">Login</button>  
 <?php } if ($oauth2_enabled === TRUE) { ?>         
-                        <a href="<?php echo base_url(); ?>connection/googleLogin" class="btn btn-lg btn-block btn-social btn-google">
+                        <a href="<?php echo base_url(); ?>connection/loginOAuth2" class="btn btn-lg btn-block btn-social btn-google">
                             <i class="fa fa-google"></i> Sign in with Google
                         </a>    
 <?php } ?>                                

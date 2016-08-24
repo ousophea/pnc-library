@@ -51,8 +51,8 @@
 	<div class="panel-footer">
 		<!-- for buttons insert or cancel -->
 		<div class="form-group">
-			<button onclick="window.history.back();" type="button" class="btn btn-danger"><span class="glyphicon glyphicon-chevron-left">Back</span></button>
-			<button id="send" type="submit" class=" pull-right btn btn-primary"><span class="glyphicon glyphicon-save"></span>&nbsp;Save</button> 
+			<button onclick="window.history.back();" type="button" class="btn btn-info"><span class="glyphicon glyphicon-floppy-remove "></span>&nbsp;Cancel</button>
+			<button id="send" type="submit" class=" pull-right btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;Save</button> 
 		</div>
 	</div>
 </form>

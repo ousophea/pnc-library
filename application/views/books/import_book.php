@@ -7,6 +7,8 @@
         <h3 class="page-header text-danger">
 
             <i class="fa fa-book"></i>&nbsp;Import Book From Excel
+            <a href="#" title="Back" 
+                onclick="window.history.back()" class="pull-right" ><i class="fa fa-reply"></i></a>
 
         </h3>
     </div>
@@ -90,6 +92,7 @@
             </div>
         </div>
     </div>
-    <button onclick="window.history.back()"  class="btn btn-info pull-left"><span class="glyphicon glyphicon glyphicon-floppy-remove glyphicon-white"></span>&nbsp;Back</button>	
+     <!--<a href="#" onclick="window.history.back()" class="pull-left" ><i class="fa fa-reply"></i></a>-->
+    <!--<button onclick="window.history.back()"  class="btn btn-info pull-left"><span class="glyphicon glyphicon glyphicon-floppy-remove glyphicon-white"></span>&nbsp;Back</button>-->	
 
 </div>
