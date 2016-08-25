@@ -174,12 +174,9 @@ class Connection extends CI_Controller {
         $gClient->setRedirectUri($redirectUrl);
         $google_oauthV2 = new Google_Oauth2Service($gClient);
 
-////        if (isset($_REQUEST['code'])) {
         $gClient->authenticate();
         $this->session->set_userdata('token', $gClient->getAccessToken());
-////        }
-//
-//        $token = $this->session->userdata('token');
+
         if (!empty($token)) {
             $gClient->setAccessToken($token);
         }
@@ -189,7 +186,7 @@ class Connection extends CI_Controller {
             $firstName = $userProfile['family_name'];
             $lastName = $userProfile['given_name'];
             $email = $userProfile['email'];
-            $login = $userProfile['family_name'].".".$userProfile['given_name'];
+            $login = $userProfile['family_name'] . "." . $userProfile['given_name'];
 //            ================Be===========
 //If we find the e-mail address into the database, we're good
             $loggedin = $this->users_model->checkCredentialsEmail($userProfile['email']);
@@ -220,16 +217,22 @@ class Connection extends CI_Controller {
 
 // Redirect to home page, when authentification is done
 //If the user has a target page redirect to this destination
+//            echo $this->session->userdata('last_page'); exit();
             if ($this->session->userdata('last_page') != '') {
                 redirect($this->session->userdata('last_page'));
             } else {
-                redirect(base_url());
+                // if admin redirect to admin page
+                if ($this->session->userdata('is_admin')) {
+                    redirect('dashboard');
+                }
+// if simple user redirect to page account state
+                redirect('account/accountState');
             }
 //            =================
         } else {
             $data['authUrl'] = $gClient->createAuthUrl();
         }
-        $this->load->view('connection/user_authentication', $data);
+//        $this->load->view('connection/user_authentication', $data);
     }
 
     /**

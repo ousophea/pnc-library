@@ -11,7 +11,7 @@ class Request extends CI_Controller {
         if ($this->session->userdata('is_admin') == "") {
             // Allow some methods?
             $allowed = array(
-                'requestBook', 'showAllrequest'
+                'requestBook', 'showAllrequest','index'
             );
             if (!in_array($this->router->fetch_method(), $allowed)) {
                 redirect('authorize');
