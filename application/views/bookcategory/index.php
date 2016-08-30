@@ -29,10 +29,10 @@
               <!-- header table -->
                    	<thead>
                         <tr class="table-row">
-                            <th>ID</th>
+                            <!--<th>ID</th>-->
                             <th>Category</th>
                             <th>Category ID</th>
-                            <th>Comment</th>
+                            <!--<th>Comment</th>-->
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -42,10 +42,10 @@
 						  foreach ($result as $value) {
 						?>
 							<tr class="odd">
-							  <td><?php echo $value->cat_id ?></td>  
+							  <!--<td><?php echo $value->cat_id ?></td>-->  
                 <td><?php echo $value->cat_name ?></td>  
 							  <td><?php echo $value->categoryId ?></td>  
-								<td><?php echo $value->cat_comment ?></td>  
+								<!--<td><?php echo $value->cat_comment ?></td>-->  
 							  <td data-order="1">
 								<span class="pull-right text-danger">
 								  <a  href="<?php echo base_url('BookCategory/edit/'.$value->cat_id);?>"  data-placement="left"  data-content="you want to edit Category now" data-trigger="hover" title="Edit Category" data-toggle="popover" ><span class="glyphicon glyphicon-pencil text-success"></span></a>

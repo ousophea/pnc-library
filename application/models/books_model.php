@@ -12,16 +12,16 @@ class Books_model extends CI_Model {
      */
 
     public function getBooks() {
-        $this->db->select('*');
-        $this->db->from('books');
-        $this->db->join('categories', 'books.cat_id = categories.cat_id');
-        $this->db->join('status', 'books.sta_id = status.sta_id');
-        $this->db->join('conditions', 'books.con_id = conditions.con_id');
-        $this->db->join('users', 'books.users_id = users.id');
-        $this->db->order_by('b_id', 'desc');
-        $query = $this->db->get();
+//        $this->db->where('b.sta_id <>',4 ); // not select delect status
+        $this->db->join('categories c', 'b.cat_id = c.cat_id');
+        $this->db->join('status s', 'b.sta_id = s.sta_id');
+        $this->db->join('conditions con', 'b.con_id = con.con_id');
+        $this->db->join('users u', 'b.users_id = u.id');
+        $this->db->order_by('b_create_date', 'desc');
+        $query = $this->db->get('books b');
         return $query->result();
     }
+
     public function getBooksForExcel() {
         $this->db->select(
                 'b_title_en as "Title",'
@@ -48,6 +48,7 @@ class Books_model extends CI_Model {
         $query = $this->db->get();
         return $query;
     }
+
     /*
      * This function for edit the books
      */
@@ -90,17 +91,30 @@ class Books_model extends CI_Model {
      * This function for delete book
      * */
     public function deleteBook($bookId) {
+        ////==========version 1
+//        $this->db->where('b_id', $bookId);
+//        $delete = $this->db->get('books')->row();
+//        if ($delete->con_id == 3) {
+//            $this->db->where('b_id', $bookId);
+//            $this->db->delete('books');
+//            $this->session->set_flashdata('msg', '<p id="upSuccess">The book has deleted</p>', 'success');
+//            redirect('Books/index');
+//        } else {
+//            $this->session->set_flashdata('msg', '<p id="unSuccess">You cannot delete this book</p>', 'danger');
+//            redirect('books/index');
+//        }
+        //==============
+        $data = array(
+            'sta_id' => 4 // update to delete status
+        );
         $this->db->where('b_id', $bookId);
-        $delete = $this->db->get('books')->row();
-        if ($delete->con_id == 3) {
-            $this->db->where('b_id', $bookId);
-            $this->db->delete('books');
+        $result = $this->db->update('books', $data);
+        if ($result) {
             $this->session->set_flashdata('msg', '<p id="upSuccess">The book has deleted</p>', 'success');
-            redirect('Books/index');
         } else {
             $this->session->set_flashdata('msg', '<p id="unSuccess">You cannot delete this book</p>', 'danger');
-            redirect('books/index');
         }
+        redirect('Books/index');
     }
 
     /*

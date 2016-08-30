@@ -43,7 +43,8 @@
                             <thead>
                                 <tr class="table-row">
                                     <th>Title EN</th>
-                                    <th>Title KH</th><th>Barcode</th>
+                                    <th>Title KH</th>
+                                    <th>Barcode</th>
                                     <th>Keyword</th>
                                     
                                 </tr>
@@ -54,10 +55,11 @@
                                 foreach ($dataDuplicate as $books) {
                                     ?>
                                     <tr class="">
-                                        <td class="text-center"> <?php echo $books['b_title_en'] ?> </td>	
+                                        <td class="text-center"> <?php echo $books['b_title_en'] ?> </td>
+                                         <td class="text-center"><?php echo $books['b_title_kh'] ?></td>	
                                         <td class="text-center"> <?php echo $books['b_barcode'] ?></td>	
                                         <td class="text-center"><?php echo $books['b_keyword'] ?></td>	
-                                        <td class="text-center"><?php echo $books['b_title_kh'] ?></td>	
+                                       
                                     </tr>
                                 <?php } ?>
                             </tbody>

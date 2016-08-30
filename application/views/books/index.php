@@ -50,7 +50,7 @@
                         <tr class="table-row">
                             <th>Barcode</th>
                             <th>Title EN/KH</th>
-                            <th>Keyword</th>
+                            <!--<th>Keyword</th>-->
                             <th>Category</th>
                             <th>Label</th>
                             <th>status</th>
@@ -75,7 +75,7 @@
                                 <td>
                                     <a href="#" data-toggle="modal" data-target="#Modal" class="detial" id="<?php echo $books->b_id; ?>"> &nbsp;<?php echo $books->b_title_en . ' ' . $books->b_title_kh; ?>
                                 </td>
-                                <td><?php echo $books->b_keyword; ?></td>								
+                                <!--<td><?php echo $books->b_keyword; ?></td>-->								
                                 <td><?php echo $books->cat_name; ?></td>															
                                 <td>
                                     <?php
@@ -134,6 +134,7 @@
                                     <p><label>Category:&nbsp;</label><span id="category"></span></p>
                                     <p><label>Language:&nbsp;</label><span id="language"></span></p>
                                     <p><label>ISBN:&nbsp;</label><span id="isbn"></span></p>
+                                    <p><label>Key work:&nbsp;</label><span id="key_word"></span></p>
                                 </div>
                                 <div class="col-sm-6">
                                     <p><label>Label:&nbsp;</label><span id="labelc"></span><span>-</span><span id="label"></span></p>
@@ -163,7 +164,7 @@
         $(document).ready(function () {
             //Transform the HTML table in a fancy datatable
             $('#dataTables-books').dataTable({
-                "order": [[4, "asc"]]
+                "order": [[4, "desc"]]
             });
             $('[data-toggle="popover"]').popover();
         });
@@ -187,6 +188,7 @@
                     $("#language").html(data[0].b_language);
                     $("#status").html(data[0].sta_name);
                     $("#isbn").html(data[0].b_isbn);
+                    $("#key_word").html(data[0].b_keyword);
                     $("#code").html(data[0].b_barcode);
                     $("#condition").html(data[0].con_name);
                     $("#year").html(data[0].b_year);

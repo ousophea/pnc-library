@@ -194,7 +194,7 @@ class Books extends CI_Controller {
      */
 
     public function delete($bookId) {
-        $this->load->model('books_model');
+//        $this->load->model('books_model');
         $this->books_model->deleteBook($bookId);
     }
 
