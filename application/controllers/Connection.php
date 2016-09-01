@@ -162,9 +162,9 @@ class Connection extends CI_Controller {
         include_once APPPATH . "libraries/google-api-php-client/contrib/Google_Oauth2Service.php";
 
         // Google Project API Credentials
-        $clientId = '986813330668-qd2hflh8v75jl0vtsi0pb1rflg6gjbvm.apps.googleusercontent.com';
-        $clientSecret = 'O5S5FrgeHFb46okzxJCs7IoU';
-        $redirectUrl = base_url() . 'connection/user_authentication';
+        $clientId = '615353290183-6i5765qtss4ksdrokjnjkdru0067rotr.apps.googleusercontent.com';
+        $clientSecret = '1lk4ds3HLsbCyKhfRZyxqtjn';
+        $redirectUrl = base_url() . 'connection/User_authentication';
 
         // Google Client Configuration
         $gClient = new Google_Client();

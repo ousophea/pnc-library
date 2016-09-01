@@ -249,7 +249,7 @@ class Books extends CI_Controller {
                 $this->session->set_flashdata('msg', '<p id="Success">Data have add to database succefully...!</p>', 'alert-success');
             }
 
-            redirect('books/importBookResult');
+            redirect('books/importbookresult');
         }
     }
 
@@ -259,7 +259,7 @@ class Books extends CI_Controller {
         $conditionName = $this->Books_model->getBookCondition();
         $barcodeList = $this->Books_model->getBarcodeList();
 
-        $this->load->library('phpexcel');
+        $this->load->library('PHPExcel');
         $objectPHPExcel = PHPExcel_IOFactory::load($file);
         foreach ($objectPHPExcel->getWorksheetIterator() as $worksheet) {
             $highestRow = $worksheet->getHighestRow();
@@ -374,12 +374,12 @@ class Books extends CI_Controller {
         }
     }
 
-    public function importBookResult() {
+    public function importbookresult() {
         $data = getUserContext($this);
         $data['title'] = 'Import book';
         $this->load->view('templates/header', $data);
         $this->load->view('templates/menu', $data);
-        $this->load->view('books/importBookResult', $data);
+        $this->load->view('books/importbookresult', $data);
         $this->load->view('templates/footer', $data);
     }
 

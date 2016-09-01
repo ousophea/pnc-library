@@ -54,6 +54,7 @@
                             <th>Category</th>
                             <th>Label</th>
                             <th>status</th>
+                           
                             <th>Comment</th>
                             <th>Action</th>
                         </tr>
