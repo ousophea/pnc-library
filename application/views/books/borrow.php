@@ -22,12 +22,12 @@
             <div class="box-title text-center"><i class="fa fa-reply"></i>&nbsp;<i class="fa fa-bank"></i>&nbsp;Borrow book</div>
         </div>
         <div class="box-body">
-            <form action="<?php echo base_url('BorrowBook/index'); ?>" method = "post">
+            <form action="<?php echo base_url('Borrowbook/index'); ?>" method = "post">
                 <label for="">Barcode</label>
                 <input type="text" name="com_barcode" id="com_barcode" class="form-control" placeholder="1234567" value="<?php echo set_value('com_barcode'); ?>"/>
             </form>
             <p class="clearfix"></p>
-            <form action="<?php echo base_url('BorrowBook/insert_borrow'); ?>" method="post">
+            <form action="<?php echo base_url('Borrowbook/insert_borrow'); ?>" method="post">
                 <?php
                 if (!empty($rule)) {
                     foreach ($rule as $key) {

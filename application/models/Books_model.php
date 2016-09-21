@@ -249,7 +249,31 @@ class Books_model extends CI_Model {
         }
         return $db_array;
     }
-
+    public function get_b_en_title_list() {
+        $this->db->select('b_id,b_title_en');
+        $this->db->from('books');
+        $data = $this->db->get();
+        $db_array = array();
+        if ($data->num_rows() > 0) { // put value into a array
+            foreach ($data->result_array() as $row) {
+                $db_array[$row['b_id']] = $row['b_title_en'];
+            }
+        }
+        return $db_array;
+    }
+    public function get_b_kh_title_list() {
+        $this->db->select('b_id,b_title_kh');
+        $this->db->from('books');
+        $data = $this->db->get();
+        $db_array = array();
+        if ($data->num_rows() > 0) { // put value into a array
+            foreach ($data->result_array() as $row) {
+                $db_array[$row['b_id']] = $row['b_title_kh'];
+            }
+        }
+        return $db_array;
+    }
+    
     public function importBook($data) {
         $this->db->insert_batch('books', $data);
     }

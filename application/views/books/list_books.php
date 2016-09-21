@@ -74,7 +74,7 @@
         echo "";
     } else if ($booking == 'Vacant') {
         ?>
-                                        <a href="<?php echo base_url('BorrowBook/borrowById/' . $books->b_id); ?>" >
+                                        <a href="<?php echo base_url('Borrowbook/borrowbyid/' . $books->b_id); ?>" >
                                             <span class="label label-success" ><i class="fa fa-cog"></i>&nbsp;Borrow</span>
                                         </a>
                                 <?php

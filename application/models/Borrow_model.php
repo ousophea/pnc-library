@@ -27,16 +27,16 @@ class Borrow_model extends CI_Model {
     function insert_data_borrow($data) {
         // check user have or not
         $this->db->where(array('bor_chechin_date' => NULL, 'users_id' => $data['users_id']));
-        $check = $this->db->get('Borrows')->result();
+        $check = $this->db->get('borrows')->result();
         // check this book booked or not
         $this->db->where(array('bor_chechin_date' => NULL, 'books_b_id' => $data['books_b_id']));
-        $checkbook = $this->db->get('Borrows')->result();
+        $checkbook = $this->db->get('borrows')->result();
         if ($check) {
             $this->session->set_flashdata('msg', '<p id="text-color-black">Please return book before you borrow new book.</p>', 'danger');
-            redirect('BorrowBook/index');
+            redirect('Borrowbook/index');
         } else if ($checkbook) {
             $this->session->set_flashdata('msg', '<p id="text-color-black">This Book is booked.</p>', 'danger');
-            redirect('BorrowBook/index');
+            redirect('Borrowbook/index');
         } else {
             $this->db->insert('borrows', $data);
 
@@ -44,7 +44,7 @@ class Borrow_model extends CI_Model {
             // update status after borrowing
             $this->db->where('b_id', $data['books_b_id']);
             $this->db->update('books', array('sta_id' => 2));
-            redirect('BorrowBook/index');
+            redirect('Borrowbook/index');
         }
     }
 

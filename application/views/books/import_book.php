@@ -9,6 +9,7 @@
             <i class="fa fa-book"></i>&nbsp;Import Book From Excel
             <a href="#" title="Back" 
                 onclick="window.history.back()" class="pull-right" ><i class="fa fa-reply"></i></a>
+                <?php // echo DATE(date('Y-m-d H:i:s')) ?>
 
         </h3>
     </div>

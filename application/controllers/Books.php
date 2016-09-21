@@ -12,18 +12,18 @@ class Books extends CI_Controller {
         setUserContext($this);
         $this->load->helper('form');
         $this->load->library('form_validation');
-        $this->load->model('books_model');
-            /////// Check user autherize to access any methods
-        if ($this->session->userdata('is_admin')=="") {
+        $this->load->model('Books_model');
+        /////// Check user autherize to access any methods
+        if ($this->session->userdata('is_admin') == "") {
             // Allow some methods?
             $allowed = array(
-                'listbook','detail_book'
+                'listbook', 'detail_book'
             );
             if (!in_array($this->router->fetch_method(), $allowed)) {
                 redirect('authorize');
             }
         }
-          /////////=====================================
+        /////////=====================================
     }
 
     /*
@@ -232,18 +232,19 @@ class Books extends CI_Controller {
         if (isset($_POST['btnImport'])) {
             $file = $_FILES['excelFile']['tmp_name'];
             $fileName = $_FILES['excelFile']['name'];
-            if (empty($file)) {
+            if (empty($file)) { //check resource file
                 $this->session->set_flashdata('msg', '<p id="unSuccess">You must choose a file!!!</p>', 'danger');
-                redirect('books/import_book');
+                redirect('books/import_book'); // error upload file
             }
-            if (!$this->IsExcel($fileName)) {
+            if (!$this->IsExcel($fileName)) { // file upload not found
                 $this->session->set_flashdata('msg', '<p id="unSuccess">You must choose a excel file to import!!!</p>', 'danger');
                 redirect('books/import_book');
             }
+            /// read file upload
             $excel_data = $this->readExcel($file);
 
-//            echo $excel_data."Hello"; exit();
-            if ($excel_data) {
+
+            if ($excel_data) { // error when read file
                 $this->session->set_flashdata('msg', '<p id="unSuccess">Can not add data to database...!</p>', 'danger');
             } else {
                 $this->session->set_flashdata('msg', '<p id="Success">Data have add to database succefully...!</p>', 'alert-success');
@@ -255,9 +256,11 @@ class Books extends CI_Controller {
 
     function readExcel($file) {
         //get list cantegory name
-        $catName = $this->category_model->getCategoriesName();
+        $catName = $this->Category_model->getCategoriesName();
         $conditionName = $this->Books_model->getBookCondition();
         $barcodeList = $this->Books_model->getBarcodeList();
+        $book_title_en = $this->Books_model->get_b_en_title_list();
+        $book_title_kh = $this->Books_model->get_b_kh_title_list();
 
         $this->load->library('PHPExcel');
         $objectPHPExcel = PHPExcel_IOFactory::load($file);
@@ -300,15 +303,27 @@ class Books extends CI_Controller {
                     'users_id' => $this->session->userdata('id'),
                     'b_label' => $label,
                     'b_barcode' => $barcode,
-                    'b_comment' => $comment
+                    'b_comment' => $comment,
+                    'b_create_date'=> DATE(date('Y-m-d H:i:s')) 
                 );
-                if ($title != "" && $title_kh != "") {
-                    if (array_search($barcode, $barcodeList) > 0) {
-                        $countDuplicats++;
-                        $dataDuplicat[$i] = $setArray;
+                // =======Check book title and barcode avoid duplicate insert
+                if ($title != "" || $title_kh != "") { // English title or khmer title no blank
+                    if ($barcode != "") { // have barcode number
+                        if (array_search($barcode, $barcodeList) > 0) { // check existing barcord
+                            $countDuplicats++;
+                            $dataDuplicat[$i] = $setArray; // duplicat barcode
+                        } else {
+                            $counter++;
+                            $data[$i] = $setArray; //get data for database
+                        }
                     } else {
-                        $counter++;
-                        $data[$i] = $setArray;
+                        if (array_search($barcode, $book_title_en) > 0 || array_search($barcode, $book_title_kh) > 0) {
+                            $countDuplicats++;
+                            $dataDuplicat[$i] = $setArray; // duplicat barcode
+                        } else {
+                            $counter++;
+                            $data[$i] = $setArray;
+                        }
                     }
                 }
                 $i++;
